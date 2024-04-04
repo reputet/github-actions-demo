@@ -1,0 +1,10 @@
+name: Demo manually run workflows
+on: workflow_dispatch
+jobs:
+  foobar:
+    name: Echo something
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, $NAME!"
+        env:
+          NAME: Fred

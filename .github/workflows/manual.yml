@@ -49,4 +49,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, ${{ github.event.inputs.name }}!"
-    needs: [bar, baz]
+    needs: bar

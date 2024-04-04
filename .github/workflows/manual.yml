@@ -42,4 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, ${{ github.event.inputs.name }}!"
-    needs: [foo, bar]
+    needs: foo
+
+  qux:
+    name: Job 3
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, ${{ github.event.inputs.name }}!"
+    needs: [bar, baz]

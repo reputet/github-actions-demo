@@ -5,7 +5,6 @@ on:
       logLevel:
         description: 'Log level'
         required: true
-        default: 'warning'
         type: choice
         options:
         - info
@@ -24,11 +23,23 @@ on:
         type: string
         required: true
         
-
 jobs:
-  foobar:
-    name: Echo something
+  foo:
+    name: Job 1
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, ${{ github.event.inputs.name }}!"
-      - run: echo "Hello, $github.event.inputs.name!"
+
+  bar:
+    name: Job 2
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, ${{ github.event.inputs.name }}!"
+    needs: foo
+
+  baz:
+    name: Job 3
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, ${{ github.event.inputs.name }}!"
+    needs: [foo, bar]

@@ -18,13 +18,17 @@ on:
       environment:
         description: 'Environment to run tests against'
         type: environment
+        required: false
+      name:
+        description: 'Name'
+        type: string
         required: true
+        
 
 jobs:
   foobar:
     name: Echo something
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, $NAME!"
-        env:
-          NAME: Fred
+      - run: echo "Hello, ${{ github.event.inputs.name }}!"
+      - run: echo "Hello, $github.event.inputs.name!"

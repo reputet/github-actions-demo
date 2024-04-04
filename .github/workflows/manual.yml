@@ -35,17 +35,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, ${{ github.event.inputs.name }}!"
+      - run: qwerasdf
     needs: foo
 
   baz:
     name: Job 3
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, ${{ github.event.inputs.names }}!"
+      - run: echo "Hello, ${{ github.event.inputs.name }}!"
     needs: foo
 
   qux:
-    name: Job 3
+    name: Job 4
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, ${{ github.event.inputs.name }}!"
